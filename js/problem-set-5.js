@@ -27,14 +27,25 @@ function mario() {
   ////////////// DO NOT MODIFY
 
   var div=document.getElementById("mario-easy-output");
-  height= prompt("Enter a height between 1 and 23.");
+  height=prompt("Enter a height between 1 and 23.");
+  let hash = "";
+  if (height>1 && height<23) {
+    let i = 1;
+    while( i != height) {
+      i = i + 1;
+      hash = hash + `# <br/>`;
+    }
 
-  while(height < 23, height > 1){
-
-  else if
-    prompt("Please enter another value between 1 and 23.");
+    /*div.innerHTML = `${i}<br/> #`;*/
+    div.innerHTML = hash;
+  } else {
+    height=prompt("Please enter another value between 1 and 23.");
   }
-  /*
+
+  /*while(height<1 || height>23){
+    height=prompt("Please enter another value between 1 and 23.");
+  }
+
   while(height < 1){
     prompt("Please enter another value between 1 and 23.");
   }*/
@@ -201,10 +212,35 @@ function hurricane() {
   let windspeed; // DO NOT MODIFY
   ///////////////// DO NOT MODIFY
 
+  windspeed = -1;
+  while (windspeed < 0 || Number.isInteger(windspeed)==false){
+      windspeed = Number(prompt("Enter a positive windspeed in miles per hour. Enter the value only."));
+  }
+
+    /*windspeed = Number(prompt("Enter a positive windspeed in miles per hour. Enter the value only."));
+  }*/
+
+  let div=document.getElementById("hurricane-output");
+  if (windspeed >= 37 && windspeed <= 73) {
+    div.innerHTML = "Tropical Storm";
+  } else if (windspeed >= 74 && windspeed <= 95) {
+    div.innerHTML = "Category 1 Hurricane.";
+  } else if (windspeed >= 96 && windspeed <= 110) {
+    div.innerHTML = "Category 2 Hurricane.";
+  } else if (windspeed >= 111 && windspeed <= 129) {
+    div.innerHTML = "Category 3 Hurricane.";
+  } else if (windspeed >= 130 && windspeed <= 156) {
+    div.innerHTML = "Category 4 Hurricane.";
+  } else if (windspeed >= 157) {
+    div.innerHTML = "Category 5 Hurricane.";
+  } /*else {
+    // TODO
+  }*/
+}
   ///////////////////////////////// DO NOT MODIFY
   check('hurricane', windspeed); // DO NOT MODIFY
   ///////////////////////////////// DO NOT MODIFY
-}
+
 
 /*
  * Gymnastics. 5 points.
