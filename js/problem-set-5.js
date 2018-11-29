@@ -81,7 +81,26 @@ function marioAgain() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 2 CODE HERE
+  var div=document.getElementById("mario-easy-output");
+  while (height < 1 || height > 23 || Number.isInteger(height)==false){
+    height = Number(prompt("Enter a height between 1 and 23."));
+  }
+    let i = 0;
+    let lines = "";
+    let hash = "#";
+    let space = `&nbsp`;
+    /*let break = `<br/>`;*/
+    while(i < height){
+      for(let j=0; j<=(height-2-i);j++) {
+        lines = lines + space;
+      }
+      for(let k=0; k<=(1+i);k++) {
+        lines = lines + hash;
+      }
+      lines = lines + "<br>";
+      i++;
+    }
+  div.innerHTML="<code>"+lines+"</code>";
 
   //////////////////////////////// DO NOT MODIFY
   check('mario-again', height); // DO NOT MODIFY
@@ -172,8 +191,73 @@ function credit() {
  */
 
 function guess() {
+  let div = document.getElementById("guess-output");
+  let randomNumber = Math.floor(Math.random() *1001) +1;
+  attempt = -1;
+  i = 0;
 
-  // WRITE YOUR EXERCISE 4 CODE HERE
+  console.log(randomNumber);
+
+  while (attempt !== randomNumber) {
+    console.log(attempt);
+    console.log(randomNumber);
+    while (attempt < 1 || attempt > 1000) {
+      console.log("inside inner loop");
+      attempt = Number(prompt("Guess the number I'm thinking of between 1 and 1000."));
+
+      if (attempt === null) {
+        break;
+      } else if (Number.isNaN(attempt)) {
+        attempt = -1;
+      } else if (!Number.isInteger(attempt)) {
+        attempt = -1;
+      }
+    }
+
+    if (attempt === null) {
+      break;
+    } else {
+      i++;
+      if (attempt > randomNumber) {
+        attempt = prompt("Nope, too high. Try again!");
+      } else if (attempt < randomNumber) {
+        attempt = prompt("Nope,too low. Try again!");
+      }
+    }
+  }
+
+  if (attempt !== null) {
+    div.innerHTML = `Correct! You guessed correctly in ${i} tries!`;
+  } else {
+    div.innerHTML = "";
+  }
+
+
+  // let attempt = -1;
+  // while (attempt < 1 || attempt > 1000) {
+  //   attempt = Number(prompt("Guess the number I'm thinking of between 1 and 1000!"));
+  //
+  //   if (attempt === null) {
+  //     break;
+  //   } else if (Number.isNaN(attempt)) {
+  //     attempt = -1;
+  //   }
+  // }
+  //
+  // if (attempt !== null) {
+  //   ///
+  // }
+  //i=0;
+  // while(attempt == randomNumber){
+  //   i++;
+  //   if(attempt > randomNumber){
+  //     div.innerHTML= "Too high!"
+  //   }
+  //   if(attempt < randomNumber){
+  //     div.innerHTML= "Too low!"
+  //   }
+  //   attempt = prompt("Nope. Try again!")
+  // }
 
   ////////////////// DO NOT MODIFY
   check('guess'); // DO NOT MODIFY
@@ -234,11 +318,10 @@ function hurricane() {
   } /*else {
     // TODO
   }*/
-}
   ///////////////////////////////// DO NOT MODIFY
   check('hurricane', windspeed); // DO NOT MODIFY
   ///////////////////////////////// DO NOT MODIFY
-
+}
 
 /*
  * Gymnastics. 5 points.
