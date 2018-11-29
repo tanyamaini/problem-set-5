@@ -27,28 +27,26 @@ function mario() {
   ////////////// DO NOT MODIFY
 
   var div=document.getElementById("mario-easy-output");
-  height=prompt("Enter a height between 1 and 23.");
-  let hash = "";
-  if (height>1 && height<23) {
-    let i = 1;
-    while( i != height) {
-      i = i + 1;
-      hash = hash + `# <br/>`;
+  while (height < 1 || height > 23 || Number.isInteger(height)==false){
+    height = Number(prompt("Enter a height between 1 and 23."));
+  }
+    let i = 0;
+    let lines = "";
+    let hash = "#";
+    let space = `&nbsp`;
+    /*let break = `<br/>`;*/
+    while(i < height){
+      for(let j=0; j<=(height-2-i);j++) {
+        lines = lines + space;
+      }
+      for(let k=0; k<=(1+i);k++) {
+        lines = lines + hash;
+      }
+      lines = lines + "<br>";
+      i++;
     }
+  div.innerHTML="<code>"+lines+"</code>";
 
-    /*div.innerHTML = `${i}<br/> #`;*/
-    div.innerHTML = hash;
-  } else {
-    height=prompt("Please enter another value between 1 and 23.");
-  }
-
-  /*while(height<1 || height>23){
-    height=prompt("Please enter another value between 1 and 23.");
-  }
-
-  while(height < 1){
-    prompt("Please enter another value between 1 and 23.");
-  }*/
 
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
