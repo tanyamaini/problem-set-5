@@ -36,10 +36,10 @@ function mario() {
     let space = `&nbsp`;
     /*let break = `<br/>`;*/
     while(i < height){
-      for(let j=0; j<=(height-2-i);j++) {
+      for(let j=0; j<=(height-i-2);j++) {
         lines = lines + space;
       }
-      for(let k=0; k<=(1+i);k++) {
+      for(let k=0; k<=(i+1);k++) {
         lines = lines + hash;
       }
       lines = lines + "<br>";
@@ -81,26 +81,30 @@ function marioAgain() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  var div=document.getElementById("mario-easy-output");
+  var div = document.getElementById("mario-hard-output");
   while (height < 1 || height > 23 || Number.isInteger(height)==false){
     height = Number(prompt("Enter a height between 1 and 23."));
   }
-    let i = 0;
-    let lines = "";
-    let hash = "#";
-    let space = `&nbsp`;
-    /*let break = `<br/>`;*/
-    while(i < height){
-      for(let j=0; j<=(height-2-i);j++) {
-        lines = lines + space;
-      }
-      for(let k=0; k<=(1+i);k++) {
-        lines = lines + hash;
-      }
-      lines = lines + "<br>";
-      i++;
+
+  let lines = "";
+  let hash = "#"
+  for (let i=0; i<height; i++){
+    let row = "";
+    for (let j=0; j<(height-i-1); j++){
+      row = row + "&nbsp;";
     }
-  div.innerHTML="<code>"+lines+"</code>";
+    row = row+ hash;
+    for (let k=0; k<(i+1); k++){
+      row = row+ hash;
+    }
+    row = row+`&nbsp;&nbsp;${hash}`;
+    for (let m=0; m<(i+1); m++){
+      row = row+ hash;
+    }
+
+    lines = lines+row+"<br/>";
+  }
+  div.innerHTML = "<code>" + lines + "</code>";
 
   //////////////////////////////// DO NOT MODIFY
   check('mario-again', height); // DO NOT MODIFY
@@ -190,48 +194,73 @@ function credit() {
  * All output should be displayed on the page, not printed to the console.
  */
 
-function guess() {
-  let div = document.getElementById("guess-output");
-  let randomNumber = Math.floor(Math.random() *1001) +1;
-  attempt = -1;
-  i = 0;
+ function guess() {
+   let div = document.getElementById("guess-output");
+   let randomNumber = Math.floor(Math.random() *1001) +1;
+   attempt = -1;
+   i = 0;
+  while (attempt < 1 || attempt > 1000 || Number.isInteger(attempt) == false){
+    attempt = Number(prompt("Guess the number I'm thinking of between 1 and 1000."));
+  }
 
-  console.log(randomNumber);
-
-  while (attempt !== randomNumber) {
-    console.log(attempt);
-    console.log(randomNumber);
-    while (attempt < 1 || attempt > 1000) {
-      console.log("inside inner loop");
-      attempt = Number(prompt("Guess the number I'm thinking of between 1 and 1000."));
-
-      if (attempt === null) {
-        break;
-      } else if (Number.isNaN(attempt)) {
-        attempt = -1;
-      } else if (!Number.isInteger(attempt)) {
-        attempt = -1;
-      }
-    }
-
-    if (attempt === null) {
-      break;
-    } else {
+  while (attempt !== randomNumber){
       i++;
-      if (attempt > randomNumber) {
+      if(attempt > randomNumber){
         attempt = prompt("Nope, too high. Try again!");
-      } else if (attempt < randomNumber) {
-        attempt = prompt("Nope,too low. Try again!");
+        if (attempt == randomNumber) {break;}
       }
-    }
+      if(attempt < randomNumber){
+        attempt = prompt("Nope,too low. Try again!");
+        if (attempt == randomNumber) {break;}
+      }
+  }
+  div.innerHTML= `Correct! The answer is ${randomNumber}. You got it in ${i} attempts.`;
+
+  /*if(attempt == randomNumber){
+    div.innerHTML= `Correct! You guessed correctly in ${i} tries!`;
   }
 
-  if (attempt !== null) {
-    div.innerHTML = `Correct! You guessed correctly in ${i} tries!`;
-  } else {
-    div.innerHTML = "";
-  }
+ /*function guess() {
+   let div = document.getElementById("guess-output");
+   let randomNumber = Math.floor(Math.random() *1001) +1;
+   attempt = -1;
+   i = 0;
 
+   console.log(randomNumber);
+
+   while (attempt !== randomNumber) {
+     console.log(attempt);
+     console.log(randomNumber)
+     while (attempt < 1 || attempt > 1000) {
+       console.log("inside inner loop");
+       attempt = Number(prompt("Guess the number I'm thinking of between 1 and 1000."));
+
+       if (attempt === null) {
+         break;
+       } else if (Number.isNaN(attempt)) {
+         attempt = -1;
+       } else if (!Number.isInteger(attempt)) {
+         attempt = -1;
+       }
+     }
+
+     if (attempt === null) {
+       break;
+     } else {
+       i++;
+       if (attempt > randomNumber) {
+         attempt = prompt("Nope, too high. Try again!");
+       } else if (attempt < randomNumber) {
+         attempt = prompt("Nope,too low. Try again!");
+       }
+     }
+   }
+
+   if (attempt !== null) {
+     div.innerHTML = `Correct! You guessed correctly in ${i} tries!`;
+   } else {
+     div.innerHTML = "";
+   }*/
 
   // let attempt = -1;
   // while (attempt < 1 || attempt > 1000) {
@@ -303,8 +332,10 @@ function hurricane() {
   }*/
 
   let div=document.getElementById("hurricane-output");
-  if (windspeed >= 37 && windspeed <= 73) {
-    div.innerHTML = "Tropical Storm";
+  if (windspeed >= 39 && windspeed <= 73) {
+    div.innerHTML = "Tropical Storm.";
+  } else if (windspeed>= 0 && windspeed <=38){
+    div.innerHTML = "The skies are calm...";
   } else if (windspeed >= 74 && windspeed <= 95) {
     div.innerHTML = "Category 1 Hurricane.";
   } else if (windspeed >= 96 && windspeed <= 110) {
@@ -347,6 +378,58 @@ function gymnastics() {
   let total = 0; //// DO NOT MODIFY
   let scores = []; // DO NOT MODIFY
   /////////////////// DO NOT MODIFY
+
+let div=document.getElementById("gymnastics-output");
+number1 = -1;
+number2 = -1;
+number3= -1;
+number4= -1;
+number5= -1;
+number6= -1;
+totalfour= 0;
+while (number1 <0 || number1 > 10){
+  number1 = Number(prompt("Enter a score from 0-10."));}
+while (number2 <0 || number2 > 10){
+  number2 = Number(prompt("Enter a second score from 0-10."));}
+while (number3 <0 || number3 > 10){
+  number3 = Number(prompt("Enter a third score from 0-10."));}
+while (number4 <0 || number4 > 10){
+  number4 = Number(prompt("Enter a fourth score from 0-10."));}
+while (number5 <0 || number5 > 10){
+  number5 = Number(prompt("Enter a fifth score from 0-10."));}
+while (number6 <0 || number6 > 10){
+  number6 = Number(prompt("Enter a sixth score from 0-10."));}
+maxnumber= Math.max(number1, number2, number3, number4, number5, number6);
+minnumber= Math.min(number1, number2, number3, number4, number5, number6);
+if(number1 != maxnumber || number1 != minnumber){
+  // totalfour = number1 + totalfour;}
+  scores.push(number1)}
+if(number2 != maxnumber || number2 != minnumber){
+  // totalfour = number2 + totalfour;}
+  scores.push(number2)}
+if(number3 != maxnumber || number3 != minnumber){
+  // totalfour = number3 + totalfour;}
+  scores.push(number3)}
+if(number4 != maxnumber || number4 != minnumber){
+  // totalfour = number4 + totalfour;}
+  scores.push(number4)}
+if(number5 != maxnumber || number5 != minnumber){
+  // totalfour = number5 + totalfour;}
+  scores.push(number5)}
+if(number6 != maxnumber || number6 != minnumber){
+  // totalfour = number6 + totalfour;}
+  scores.push(number6)}
+  total = number1 + number2 + number3 + number4 + number5 + number6
+  average = ((total- maxnumber - minnumber)/4);
+// average= totalfour / 4;
+// div.innerHTML= `Discarded: ${minnumber}, ${maxnumber}` + `<br/> Score: ${average.toFixed(2)}`;
+div.innerHTML= `Discarded: ${Math.min(number1, number2, number3, number4, number5, number6)}, ${Math.max(number1, number2, number3, number4, number5, number6)}` + `<br/>Score: ${average.toFixed(2)}`;
+
+// number1= prompt("Enter a score from 0-10.");
+// if (number1<0 && number1>=10){
+//   number2= prompt("Enter another score from 0-10.");}
+// else { prompt("Please ")}
+
 
   /*
    * NOTE: The 'total' variable should be representative of the sum of all
