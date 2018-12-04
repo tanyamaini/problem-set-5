@@ -211,77 +211,6 @@ function credit() {
         div3.innerHTML = "";
       }
 
-// let firstSum = 0;
-// let secondSum = 0;
-// var div = document.getElementById("credit-output");
-// while(Number.isInteger(card)== false){
-//   card= Number(prompt("Enter your credit card number.")
-//   break;
-// }
-// for(let i = card.length-2; i >= 0; i-=2) {
-//   let num = Number(card[i]) * 2;
-//   let numStrn = num.toString();
-//   let numSum = 0;
-//   for (let j = 0 ; j < numStrn.length; j++){
-//     numSum = numSum + Number(numStrn[j]);
-//   }
-//   firstSum = numSum + firstSum;
-//   console.log(firstSum);
-//   }
-//   for(let k = card.length-1; k >= 0;k-=2){
-//     secondSum = secondSum + Number(card[k])
-//   }
-//   console.log(secondSum);
-//   if (card.length == 15 && (card[0] == 3 &&(card[1] == 7 || card[1] == 4)) && (firstSum + secondSum )% 10 == 0){
-//     div.innerHTML="<img src ='./images/amex.png'/>";
-//   }
-//   else if ((card.length == 13 || card.length == 16) && card[0] == 4 && (firstSum + secondSum) % 10 == 0){
-//     div.innerHTML="<img src ='./images/visa.png'/>";
-//   }
-//   else if (card.length == 16 && (card[0] == 5 && (card[1] == 1 || card[1] == 2 || card[1] == 4 || card[1] == 5)) && (firstSum + secondSum) % 10 == 0){
-//     div.innerHTML="<img src ='./images/mastercard.png'/>";
-//   }
-//   else {
-//     div.innerHTML="<img src ='./images/invalid.png'/>";
-//   }
-//   card=Number(card);
-
-  // let div = document.getElementById("credit-output");
-  // let firstSum = 0;
-  // let secondSum = 0;
-  // while (true){
-  //   card = prompt("Enter your credit card number: ");
-  //     if (Number.isInteger(Number(card))){
-  //       break;
-  //     }
-  // }
-  // for(let i = card.length-2; i >= 0; i-=2) {
-  //   let num = Number(card[i]) * 2;
-  //   let numStrn = num.toString();
-  //   let numSum = 0;
-  //   for (let j = 0 ; j < numStrn.length; j++){
-  //     numSum = numSum + Number(numStrn[j]);
-  //   }
-  //   firstSum = numSum + firstSum;
-  //   console.log(firstSum);
-  //   }
-  //   for(let k = card.length-1; k >= 0;k-=2){
-  //     secondSum = secondSum + Number(card[k])
-  //   }
-  //   console.log(secondSum);
-  //   if (card.length == 15 && (card[0] == 3 &&(card[1] == 7 || card[1] == 4)) && (firstSum + secondSum )% 10 == 0){
-  //     document.getElementById("credit-output").innerHTML="<img src ='./images/amex.png'/>";
-  //   }
-  //   else if ((card.length == 13 || card.length == 16) && card[0] == 4 && (firstSum + secondSum) % 10 == 0){
-  //     document.getElementById("credit-output").innerHTML="<img src ='./images/visa.png'/>";
-  //   }
-  //   else if (card.length == 16 && (card[0] == 5 && (card[1] == 1 || card[1] == 2 || card[1] == 4 || card[1] == 5)) && (firstSum + secondSum) % 10 == 0){
-  //     document.getElementById("credit-output").innerHTML="<img src ='./images/mastercard.png'/>";
-  //   }
-  //   else {
-  //     document.getElementById("credit-output").innerHTML="<img src ='./images/invalid.png'/>";
-  //   }
-  //   card=Number(card);
 
 
   /*
@@ -570,29 +499,6 @@ homeworkAverage = homeworkTotal/homeworks;
 totalAverage = (testAverage * 0.6) + (quizAverage * 0.3) + (homeworkAverage * 0.1);
 div.innerHTML = "Tests: " + testAverage.toFixed(2) + "</br>Quizzes: " + quizAverage.toFixed(2) + "</br>Homework: " + homeworkAverage.toFixed(2) + "</br>Grade: " + totalAverage.toFixed(2);
 
-
-// let testscores= 0;
-// let quizscores= 0;
-// let homeworkscores= 0;
-// let div=document.getElementById("report-card-output");
-// while (tests <0 || tests>100 || Number.isInteger(tests)==false){
-//   tests = Number(prompt("Enter a test score. Type -1 when you are finsihed."));
-//   if (tests == -1){
-//     testTotal = tests
-//   }
-// }
-// if (tests == -1){
-//   while (quizzes <0 || quizzes > 100 || Number.isInteger(quizzes)==false){
-//     quizzes = Number(prompt("Enter a quiz score. Type -1 when you are finished."));
-//     quizscores.push(quizzes);
-// }}
-// if (quizzes == -1){
-//   while (homeworks<0 || homeworks> 100 || Number.isInteger(homeworks)==false){
-//     homeworks = Number(prompt("Enter a homework score. Type -1 when you are finsihed."));
-//     homeworkscores.push(homeworks);
-// }}
-//
-// div.innerHTML =
 
 
   /*
