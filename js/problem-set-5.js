@@ -157,7 +157,131 @@ function credit() {
   let card; // DO NOT MODIFY
   //////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 3 CODE HERE
+  let firstSum = 0;
+      let secondSum = 0;
+      while (true){
+        card = prompt("Enter your credit card number: ");
+        if (Number.isInteger(Number(card))){
+          break;
+        }
+        if(card === null){
+          break;
+        }
+      }
+
+      if (card !== null) {
+        for(let aCard= card.length-2; aCard>= 0; aCard-=2) {
+          let num = Number(card[aCard]) * 2;
+          let numCardString = num.toString();
+          let numCardSum = 0;
+          for (let bCard= 0 ; bCard< numCardString.length; bCard++){
+            numCardSum = numCardSum + Number(numCardString[bCard]);
+          }
+          firstSum = numCardSum + firstSum;
+          console.log(firstSum);
+        }
+
+        for(let cCard= card.length-1; cCard>= 0;cCard-=2){
+          secondSum = secondSum + Number(card[cCard])
+        }
+
+        console.log(secondSum);
+
+        if (card.length == 15 && (card[0] == 3 &&(card[1] == 7 || card[1] == 4)) && (firstSum + secondSum )% 10 == 0){
+          let div3=document.getElementById("credit-output")
+          div3.innerHTML="<img src ='./images/amex.png'/>";
+        }
+        else if ((card.length == 13 || card.length == 16) && card[0] == 4 && (firstSum + secondSum) % 10 == 0){
+          let div3=document.getElementById("credit-output")
+          div3.innerHTML="<img src ='./images/visa.png'/>";
+        }
+        else if (card.length == 16 && (card[0] == 5 && (card[1] == 1 || card[1] == 2 || card[1] == 4 || card[1] == 5)) && (firstSum + secondSum) % 10 == 0){
+          let div3=document.getElementById("credit-output")
+          div3.innerHTML="<img src ='./images/mastercard.png'/>";
+        }
+        else {
+          let div3=document.getElementById("credit-output")
+          div3.innerHTML="<img src ='./images/invalid.png'/>";
+        }
+
+        card=Number(card);
+      } else {
+        let div3=document.getElementById("credit-output")
+        div3.innerHTML = "";
+      }
+
+// let firstSum = 0;
+// let secondSum = 0;
+// var div = document.getElementById("credit-output");
+// while(Number.isInteger(card)== false){
+//   card= Number(prompt("Enter your credit card number.")
+//   break;
+// }
+// for(let i = card.length-2; i >= 0; i-=2) {
+//   let num = Number(card[i]) * 2;
+//   let numStrn = num.toString();
+//   let numSum = 0;
+//   for (let j = 0 ; j < numStrn.length; j++){
+//     numSum = numSum + Number(numStrn[j]);
+//   }
+//   firstSum = numSum + firstSum;
+//   console.log(firstSum);
+//   }
+//   for(let k = card.length-1; k >= 0;k-=2){
+//     secondSum = secondSum + Number(card[k])
+//   }
+//   console.log(secondSum);
+//   if (card.length == 15 && (card[0] == 3 &&(card[1] == 7 || card[1] == 4)) && (firstSum + secondSum )% 10 == 0){
+//     div.innerHTML="<img src ='./images/amex.png'/>";
+//   }
+//   else if ((card.length == 13 || card.length == 16) && card[0] == 4 && (firstSum + secondSum) % 10 == 0){
+//     div.innerHTML="<img src ='./images/visa.png'/>";
+//   }
+//   else if (card.length == 16 && (card[0] == 5 && (card[1] == 1 || card[1] == 2 || card[1] == 4 || card[1] == 5)) && (firstSum + secondSum) % 10 == 0){
+//     div.innerHTML="<img src ='./images/mastercard.png'/>";
+//   }
+//   else {
+//     div.innerHTML="<img src ='./images/invalid.png'/>";
+//   }
+//   card=Number(card);
+
+  // let div = document.getElementById("credit-output");
+  // let firstSum = 0;
+  // let secondSum = 0;
+  // while (true){
+  //   card = prompt("Enter your credit card number: ");
+  //     if (Number.isInteger(Number(card))){
+  //       break;
+  //     }
+  // }
+  // for(let i = card.length-2; i >= 0; i-=2) {
+  //   let num = Number(card[i]) * 2;
+  //   let numStrn = num.toString();
+  //   let numSum = 0;
+  //   for (let j = 0 ; j < numStrn.length; j++){
+  //     numSum = numSum + Number(numStrn[j]);
+  //   }
+  //   firstSum = numSum + firstSum;
+  //   console.log(firstSum);
+  //   }
+  //   for(let k = card.length-1; k >= 0;k-=2){
+  //     secondSum = secondSum + Number(card[k])
+  //   }
+  //   console.log(secondSum);
+  //   if (card.length == 15 && (card[0] == 3 &&(card[1] == 7 || card[1] == 4)) && (firstSum + secondSum )% 10 == 0){
+  //     document.getElementById("credit-output").innerHTML="<img src ='./images/amex.png'/>";
+  //   }
+  //   else if ((card.length == 13 || card.length == 16) && card[0] == 4 && (firstSum + secondSum) % 10 == 0){
+  //     document.getElementById("credit-output").innerHTML="<img src ='./images/visa.png'/>";
+  //   }
+  //   else if (card.length == 16 && (card[0] == 5 && (card[1] == 1 || card[1] == 2 || card[1] == 4 || card[1] == 5)) && (firstSum + secondSum) % 10 == 0){
+  //     document.getElementById("credit-output").innerHTML="<img src ='./images/mastercard.png'/>";
+  //   }
+  //   else {
+  //     document.getElementById("credit-output").innerHTML="<img src ='./images/invalid.png'/>";
+  //   }
+  //   card=Number(card);
+
 
   /*
    * NOTE: After reading in the card number and storing it in the 'card'
@@ -216,77 +340,6 @@ function credit() {
   }
   div.innerHTML= `Correct! The answer is ${randomNumber}. You got it in ${i} attempts.`;
 
-  /*if(attempt == randomNumber){
-    div.innerHTML= `Correct! You guessed correctly in ${i} tries!`;
-  }
-
- /*function guess() {
-   let div = document.getElementById("guess-output");
-   let randomNumber = Math.floor(Math.random() *1001) +1;
-   attempt = -1;
-   i = 0;
-
-   console.log(randomNumber);
-
-   while (attempt !== randomNumber) {
-     console.log(attempt);
-     console.log(randomNumber)
-     while (attempt < 1 || attempt > 1000) {
-       console.log("inside inner loop");
-       attempt = Number(prompt("Guess the number I'm thinking of between 1 and 1000."));
-
-       if (attempt === null) {
-         break;
-       } else if (Number.isNaN(attempt)) {
-         attempt = -1;
-       } else if (!Number.isInteger(attempt)) {
-         attempt = -1;
-       }
-     }
-
-     if (attempt === null) {
-       break;
-     } else {
-       i++;
-       if (attempt > randomNumber) {
-         attempt = prompt("Nope, too high. Try again!");
-       } else if (attempt < randomNumber) {
-         attempt = prompt("Nope,too low. Try again!");
-       }
-     }
-   }
-
-   if (attempt !== null) {
-     div.innerHTML = `Correct! You guessed correctly in ${i} tries!`;
-   } else {
-     div.innerHTML = "";
-   }*/
-
-  // let attempt = -1;
-  // while (attempt < 1 || attempt > 1000) {
-  //   attempt = Number(prompt("Guess the number I'm thinking of between 1 and 1000!"));
-  //
-  //   if (attempt === null) {
-  //     break;
-  //   } else if (Number.isNaN(attempt)) {
-  //     attempt = -1;
-  //   }
-  // }
-  //
-  // if (attempt !== null) {
-  //   ///
-  // }
-  //i=0;
-  // while(attempt == randomNumber){
-  //   i++;
-  //   if(attempt > randomNumber){
-  //     div.innerHTML= "Too high!"
-  //   }
-  //   if(attempt < randomNumber){
-  //     div.innerHTML= "Too low!"
-  //   }
-  //   attempt = prompt("Nope. Try again!")
-  // }
 
   ////////////////// DO NOT MODIFY
   check('guess'); // DO NOT MODIFY
@@ -327,10 +380,6 @@ function hurricane() {
   while (windspeed < 0 || Number.isInteger(windspeed)==false){
       windspeed = Number(prompt("Enter a positive windspeed in miles per hour. Enter the value only."));
   }
-
-    /*windspeed = Number(prompt("Enter a positive windspeed in miles per hour. Enter the value only."));
-  }*/
-
   let div=document.getElementById("hurricane-output");
   if (windspeed >= 39 && windspeed <= 73) {
     div.innerHTML = "Tropical Storm.";
@@ -387,48 +436,35 @@ number4= -1;
 number5= -1;
 number6= -1;
 totalfour= 0;
-while (number1 <0 || number1 > 10){
+while (number1 <0 || number1 > 10 || Number.isInteger(number1) == false){
   number1 = Number(prompt("Enter a score from 0-10."));}
-while (number2 <0 || number2 > 10){
+while (number2 <0 || number2 > 10 || Number.isInteger(number2) == false){
   number2 = Number(prompt("Enter a second score from 0-10."));}
-while (number3 <0 || number3 > 10){
+while (number3 <0 || number3 > 10 || Number.isInteger(number3) == false){
   number3 = Number(prompt("Enter a third score from 0-10."));}
-while (number4 <0 || number4 > 10){
+while (number4 <0 || number4 > 10 || Number.isInteger(number4) == false){
   number4 = Number(prompt("Enter a fourth score from 0-10."));}
-while (number5 <0 || number5 > 10){
+while (number5 <0 || number5 > 10 || Number.isInteger(number5) == false){
   number5 = Number(prompt("Enter a fifth score from 0-10."));}
-while (number6 <0 || number6 > 10){
+while (number6 <0 || number6 > 10 || Number.isInteger(number6) == false){
   number6 = Number(prompt("Enter a sixth score from 0-10."));}
 maxnumber= Math.max(number1, number2, number3, number4, number5, number6);
 minnumber= Math.min(number1, number2, number3, number4, number5, number6);
 if(number1 != maxnumber || number1 != minnumber){
-  // totalfour = number1 + totalfour;}
   scores.push(number1)}
 if(number2 != maxnumber || number2 != minnumber){
-  // totalfour = number2 + totalfour;}
   scores.push(number2)}
 if(number3 != maxnumber || number3 != minnumber){
-  // totalfour = number3 + totalfour;}
   scores.push(number3)}
 if(number4 != maxnumber || number4 != minnumber){
-  // totalfour = number4 + totalfour;}
   scores.push(number4)}
 if(number5 != maxnumber || number5 != minnumber){
-  // totalfour = number5 + totalfour;}
   scores.push(number5)}
 if(number6 != maxnumber || number6 != minnumber){
-  // totalfour = number6 + totalfour;}
   scores.push(number6)}
   total = number1 + number2 + number3 + number4 + number5 + number6
   average = ((total- maxnumber - minnumber)/4);
-// average= totalfour / 4;
-// div.innerHTML= `Discarded: ${minnumber}, ${maxnumber}` + `<br/> Score: ${average.toFixed(2)}`;
 div.innerHTML= `Discarded: ${Math.min(number1, number2, number3, number4, number5, number6)}, ${Math.max(number1, number2, number3, number4, number5, number6)}` + `<br/>Score: ${average.toFixed(2)}`;
-
-// number1= prompt("Enter a score from 0-10.");
-// if (number1<0 && number1>=10){
-//   number2= prompt("Enter another score from 0-10.");}
-// else { prompt("Please ")}
 
 
   /*
@@ -489,6 +525,74 @@ function reportCard() {
   let quizzes = 0; //// DO NOT MODIFY
   let homeworks = 0; // DO NOT MODIFY
   ///////////////////// DO NOT MODIFY
+
+let div= document.getElementById("report-card-output");
+testscore = Number(prompt('Enter a test score between 0 and 100. Enter -1 when you have done.'));
+while (testscore){
+  if (testscore == -1){
+    testscore = false;
+    break;
+  }
+  else if(testscore <= 100 && 0 <= testscore){
+    tests = tests + 1;
+    testTotal =testTotal + testscore;
+  }
+testscore = prompt('Enter a test score between 0 and 100. Enter -1 when you have done.')
+}
+quizscore = Number(prompt('Enter a quiz score between 0 and 100. Enter -1 when you have done.'));
+  while (quizscore) {
+    if (quizscore == -1){
+     quizscore = false;
+     break;
+    }
+    else if(quizscore <= 100 && 0 <= quizscore){
+     quizzes = quizzes + 1;
+     quizTotal = quizTotal + quizscore;
+    }
+quizscore = Number(prompt('Enter a quiz score between 0 and 100. Enter -1 when you have done.'));
+}
+homeworkscore = Number(prompt('Enter a homework score between 0 and 100. Enter -1 when you have done.'));
+while (homeworkscore){
+  if(homeworkscore == -1){
+   homeworkscore = false;
+   break;
+  }
+  else if(homeworkscore <= 100 && 0 <= homeworkscore){
+   homeworks = homeworks + 1;
+   homeworkTotal = homeworkTotal+ homeworkscore;
+  }
+  homeworkscore = Number(prompt('Enter a homework score between 0 and 100. Enter -1 when you have done.'));
+}
+testAverage = testTotal/tests;
+quizAverage = quizTotal/quizzes;
+homeworkAverage = homeworkTotal/homeworks;
+totalAverage = (testAverage * 0.6) + (quizAverage * 0.3) + (homeworkAverage * 0.1);
+div.innerHTML = "Tests: " + testAverage.toFixed(2) + "</br>Quizzes: " + quizAverage.toFixed(2) + "</br>Homework: " + homeworkAverage.toFixed(2) + "</br>Grade: " + totalAverage.toFixed(2);
+
+
+// let testscores= 0;
+// let quizscores= 0;
+// let homeworkscores= 0;
+// let div=document.getElementById("report-card-output");
+// while (tests <0 || tests>100 || Number.isInteger(tests)==false){
+//   tests = Number(prompt("Enter a test score. Type -1 when you are finsihed."));
+//   if (tests == -1){
+//     testTotal = tests
+//   }
+// }
+// if (tests == -1){
+//   while (quizzes <0 || quizzes > 100 || Number.isInteger(quizzes)==false){
+//     quizzes = Number(prompt("Enter a quiz score. Type -1 when you are finished."));
+//     quizscores.push(quizzes);
+// }}
+// if (quizzes == -1){
+//   while (homeworks<0 || homeworks> 100 || Number.isInteger(homeworks)==false){
+//     homeworks = Number(prompt("Enter a homework score. Type -1 when you are finsihed."));
+//     homeworkscores.push(homeworks);
+// }}
+//
+// div.innerHTML =
+
 
   /*
    * NOTE: The 'tests', 'quizzes', and 'homeworks' variables should be
