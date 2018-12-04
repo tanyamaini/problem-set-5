@@ -157,59 +157,52 @@ function credit() {
   let card; // DO NOT MODIFY
   //////////// DO NOT MODIFY
 
-  let firstSum = 0;
-      let secondSum = 0;
-      while (true){
-        card = prompt("Enter your credit card number: ");
-        if ((card.length==16) && Number.isInteger(Number(card)) || card.length==15 || card.length==13){
-          break;
-        }
-        if(card === null){
-          break;
-        }
-      }
-
-      if (card !== null) {
-        for(let card1= card.length-2; card1>= 0; card1-=2) {
-          let num = Number(card[card1]) * 2;
-          let numCardString = num.toString();
-          let numCardSum = 0;
-          for (let card2= 0 ; card2< numCardString.length; card2++){
-            numCardSum = numCardSum + Number(numCardString[card2]);
-          }
-          firstSum = numCardSum + firstSum;
-          console.log(firstSum);
-        }
-
-        for(let card3= card.length-1; card3>= 0;card3-=2){
-          secondSum = secondSum + Number(card[card3])
-        }
-
-        console.log(secondSum);
-
-        if (card.length == 15 && (card[0] == 3 &&(card[1] == 7 || card[1] == 4)) && (firstSum + secondSum )% 10 == 0){
-          let div3=document.getElementById("credit-output")
-          div3.innerHTML="<img src ='./images/amex.png'/>";
-        }
-        else if ((card.length == 13 || card.length == 16) && card[0] == 4 && (firstSum + secondSum) % 10 == 0){
-          let div3=document.getElementById("credit-output")
-          div3.innerHTML="<img src ='./images/visa.png'/>";
-        }
-        else if (card.length == 16 && (card[0] == 5 && (card[1] == 1 || card[1] == 2 || card[1] == 4 || card[1] == 5)) && (firstSum + secondSum) % 10 == 0){
-          let div3=document.getElementById("credit-output")
-          div3.innerHTML="<img src ='./images/mastercard.png'/>";
-        }
-        else {
-          let div3=document.getElementById("credit-output")
-          div3.innerHTML="<img src ='./images/invalid.png'/>";
-          div.innerHTML="Invalid.";
-        }
-
-      card=Number(card);
-      } else {
-        let div3=document.getElementById("credit-output")
-        div3.innerHTML = "";
-      }
+let firstSum = 0;
+let secondSum = 0;
+while (true){
+  card = prompt("Enter your credit card number: ");
+  if ((card.length==16) && Number.isInteger(Number(card)) || card.length==15 || card.length==13){
+    break;
+  }
+  if(card === null){
+    break;
+  }
+}
+if (card !== null) {
+  for(let card1= card.length-2; card1>= 0; card1-=2) {
+    let num = Number(card[card1]) * 2;
+    let numCardString = num.toString();
+    let numCardSum = 0;
+    for (let card2= 0 ; card2< numCardString.length; card2++){
+      numCardSum = numCardSum + Number(numCardString[card2]);
+    }
+    firstSum = numCardSum + firstSum;
+  }
+for(let card3= card.length-1; card3>= 0;card3-=2){
+  secondSum = secondSum + Number(card[card3])
+}
+if (card.length == 15 && (card[0] == 3 &&(card[1] == 7 || card[1] == 4)) && (firstSum + secondSum )% 10 == 0){
+  let div=document.getElementById("credit-output")
+  div.innerHTML="<img src ='./images/amex.png'/>";
+}
+else if ((card.length == 13 || card.length == 16) && card[0] == 4 && (firstSum + secondSum) % 10 == 0){
+  let div=document.getElementById("credit-output")
+  div.innerHTML="<img src ='./images/visa.png'/>";
+  }
+else if (card.length == 16 && (card[0] == 5 && (card[1] == 1 || card[1] == 2 || card[1] == 4 || card[1] == 5)) && (firstSum + secondSum) % 10 == 0){
+  let div=document.getElementById("credit-output")
+  div.innerHTML="<img src ='./images/mastercard.png'/>";
+  }
+else {
+  let div=document.getElementById("credit-output")
+  div.innerHTML= "<img src ='./images/invalid.png'/>";
+}
+card=Number(card);
+}
+else {
+  let div=document.getElementById("credit-output");
+  div.innerHTML = "";
+}
 
 
 
