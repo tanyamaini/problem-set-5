@@ -161,7 +161,7 @@ function credit() {
       let secondSum = 0;
       while (true){
         card = prompt("Enter your credit card number: ");
-        if (Number.isInteger(Number(card))){
+        if ((card.length==16) && Number.isInteger(Number(card)) || card.length==15 || card.length==13){
           break;
         }
         if(card === null){
@@ -170,19 +170,19 @@ function credit() {
       }
 
       if (card !== null) {
-        for(let aCard= card.length-2; aCard>= 0; aCard-=2) {
-          let num = Number(card[aCard]) * 2;
+        for(let card1= card.length-2; card1>= 0; card1-=2) {
+          let num = Number(card[card1]) * 2;
           let numCardString = num.toString();
           let numCardSum = 0;
-          for (let bCard= 0 ; bCard< numCardString.length; bCard++){
-            numCardSum = numCardSum + Number(numCardString[bCard]);
+          for (let card2= 0 ; card2< numCardString.length; card2++){
+            numCardSum = numCardSum + Number(numCardString[card2]);
           }
           firstSum = numCardSum + firstSum;
           console.log(firstSum);
         }
 
-        for(let cCard= card.length-1; cCard>= 0;cCard-=2){
-          secondSum = secondSum + Number(card[cCard])
+        for(let card3= card.length-1; card3>= 0;card3-=2){
+          secondSum = secondSum + Number(card[card3])
         }
 
         console.log(secondSum);
@@ -202,9 +202,10 @@ function credit() {
         else {
           let div3=document.getElementById("credit-output")
           div3.innerHTML="<img src ='./images/invalid.png'/>";
+          div.innerHTML="Invalid.";
         }
 
-        card=Number(card);
+      card=Number(card);
       } else {
         let div3=document.getElementById("credit-output")
         div3.innerHTML = "";
